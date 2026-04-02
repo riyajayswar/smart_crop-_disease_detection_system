@@ -37,7 +37,7 @@ def load_data(data_dir):
 
 
 if __name__ == "__main__":
-    data_dir = "../dataset/train"
+    data_dir = "dataset/train"
 
     X, y, classes = load_data(data_dir)
 
