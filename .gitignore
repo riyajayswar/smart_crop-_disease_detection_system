@@ -1,0 +1,24 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+
+# Dataset (raw images)
+dataset/raw/
+
+# Optional: ignore full dataset if large
+dataset/train/
+dataset/test/
+dataset/validation/
+
+# Model files
+*.h5
+*.pkl
+
+# System files
+.DS_Store
+
+# Environment variables
+.env
