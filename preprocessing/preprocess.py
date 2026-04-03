@@ -1,4 +1,4 @@
-from preprocessing.data_loader import load_data
+from data_loader import load_data
 
 if __name__ == "__main__":
     data_dir = "dataset/train"
