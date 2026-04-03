@@ -1,44 +1,44 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import os
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = 'uploads'
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # Max 16MB upload
 
-UPLOAD_FOLDER = os.path.join(app.root_path, 'static', 'uploads')
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+# Allowed image extensions
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
-# Ensure folder exists
-if not os.path.exists(UPLOAD_FOLDER):
-    os.makedirs(UPLOAD_FOLDER)
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route('/', methods=['GET', 'POST'])
-def home():
-    prediction = None
+@app.route("/", methods=["GET", "POST"])
+def index():
     image_path = None
+    prediction = None
 
-    if request.method == 'POST':
-        print("POST received")
-
+    if request.method == "POST":
         if 'file' not in request.files:
-            print("No file part")
-            return render_template('index.html')
+            return redirect(request.url)
 
         file = request.files['file']
 
-        if file.filename == "":
-            print("No selected file")
-            return render_template('index.html')
+        if file.filename == '':
+            return redirect(request.url)
 
-        filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-        file.save(filepath)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            save_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(save_path)
+            image_path = save_path
 
-        # IMPORTANT FIX
-        image_path = "static/uploads/" + file.filename
+            # TODO: Replace this with your actual AI model prediction
+            prediction = "Leaf Blight"  # Example prediction
 
-        prediction = "Healthy Leaf (Demo Result)"
+    return render_template("index.html", image_path=image_path, prediction=prediction)
 
-        print("Saved:", filepath)
-
-    return render_template('index.html', prediction=prediction, image_path=image_path)
-
-if __name__ == '__main__':
+if __name__ == "__main__":
+    # Make sure upload folder exists
+    if not os.path.exists(app.config['UPLOAD_FOLDER']):
+        os.makedirs(app.config['UPLOAD_FOLDER'])
     app.run(debug=True)

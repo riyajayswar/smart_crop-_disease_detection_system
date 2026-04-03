@@ -100,11 +100,16 @@ body {
     justify-content: center;
     border-radius: 15px;
     cursor: pointer;
+<<<<<<< Updated upstream
     margin: 0 auto;
     background-color: #fafafa;
     position: relative;
     transition: background 0.3s, box-shadow 0.3s;
     overflow: hidden;
+=======
+    transition: 0.3s;
+    position: relative;
+>>>>>>> Stashed changes
 }
 
 .upload-box:hover {
@@ -150,11 +155,22 @@ body {
     transition: 0.3s;
 }
 
+<<<<<<< Updated upstream
 .upload button:hover {
     background: #1b5e20;
 }
 
 /* ===================== FEATURES ===================== */
+=======
+/* PREVIEW */
+#preview {
+    margin-top: 15px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* FEATURES */
+>>>>>>> Stashed changes
 .features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -208,7 +224,20 @@ footer i {
     cursor: pointer;
 }
 
+<<<<<<< Updated upstream
 /* ===================== RESPONSIVE ===================== */
+=======
+/* LOADING */
+#loading {
+    display: none;
+    text-align: center;
+    font-size: 18px;
+    color: #2e7d32;
+    margin-top: 15px;
+}
+
+/* RESPONSIVE */
+>>>>>>> Stashed changes
 @media(max-width:768px){
     .navbar {
         flex-direction: column;
@@ -245,6 +274,7 @@ footer i {
 
 <!-- UPLOAD -->
 <section class="upload" id="upload">
+<<<<<<< Updated upstream
     <form method="POST" action="/" enctype="multipart/form-data">
         <label class="upload-box" id="uploadBox">
             <input type="file" name="file" id="fileInput" required>
@@ -255,14 +285,22 @@ footer i {
         </label>
         <div id="file-name"></div>
         <button type="submit" onclick="showLoading()">Analyze Crop</button>
+=======
+    <form method="POST" action="/" enctype="multipart/form-data" id="uploadForm" onsubmit="showLoading()">
+
+        <label class="upload-box" id="dropBox">
+            <p><i class="fa fa-upload"></i> Drag & Drop or Click to Upload</p>
+            <input type="file" name="file" id="fileInput" required>
+            <img id="preview" style="display:none; width:200px;">
+        </label>
+
+        <br>
+        <button type="submit">Analyze Crop</button>
+>>>>>>> Stashed changes
         <p style="margin-top:10px;">Upload a clear image of crop leaf</p>
     </form>
+    <div id="loading">Analyzing...</div>
 </section>
-
-<!-- LOADING -->
-<div id="loading" style="display:none; text-align:center;">
-    <p>Analyzing...</p>
-</div>
 
 <!-- RESULT -->
 <section class="result">
@@ -319,8 +357,55 @@ footer i {
 
 <!-- JS -->
 <script>
+const dropBox = document.getElementById('dropBox');
+const fileInput = document.getElementById('fileInput');
+const preview = document.getElementById('preview');
+const loading = document.getElementById('loading');
+
+// Prevent default drag behaviors
+['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    dropBox.addEventListener(eventName, (e) => e.preventDefault(), false);
+});
+
+// Highlight drop area when dragging
+['dragenter', 'dragover'].forEach(eventName => {
+    dropBox.addEventListener(eventName, () => dropBox.style.background = '#f1f8e9', false);
+});
+['dragleave', 'drop'].forEach(eventName => {
+    dropBox.addEventListener(eventName, () => dropBox.style.background = '', false);
+});
+
+// Handle dropped files
+dropBox.addEventListener('drop', (e) => {
+    const files = e.dataTransfer.files;
+
+    if(files.length > 0){
+        // Take the first image file
+        const file = Array.from(files).find(f => f.type.startsWith('image/'));
+        if(file) {
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(file);
+            fileInput.files = dataTransfer.files; 
+            preview.src = URL.createObjectURL(file);
+            preview.style.display = 'block';
+        } else {
+            alert('Please upload an image file only!');
+        }
+    }
+});
+
+// Image preview on file select
+fileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if(file){
+        preview.src = URL.createObjectURL(file);
+        preview.style.display = 'block';
+    }
+});
+
+// Show loading spinner
 function showLoading(){
-    document.getElementById("loading").style.display = "block";
+    loading.style.display = 'block';
 }
 
 // Show file name after selection
