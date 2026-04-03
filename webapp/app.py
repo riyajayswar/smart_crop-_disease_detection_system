@@ -1,44 +1,35 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 import os
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = 'uploads'
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # Max 16MB upload
 
-# Allowed image extensions
+UPLOAD_FOLDER = 'static/uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    image_path = None
     prediction = None
+    image_path = None
 
     if request.method == "POST":
-        if 'file' not in request.files:
-            return redirect(request.url)
-
-        file = request.files['file']
-
-        if file.filename == '':
-            return redirect(request.url)
-
+        file = request.files.get('file')
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            save_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            file.save(save_path)
-            image_path = save_path
+            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(filepath)
+            prediction = "Healthy Leaf"
+            image_path = filepath
+    return render_template("index.html", prediction=prediction, image_path=image_path)
 
-            # TODO: Replace this with your actual AI model prediction
-            prediction = "Leaf Blight"  # Example prediction
-
-    return render_template("index.html", image_path=image_path, prediction=prediction)
-
+# 🔹 Correct way to run Flask in VS Code
 if __name__ == "__main__":
-    # Make sure upload folder exists
-    if not os.path.exists(app.config['UPLOAD_FOLDER']):
-        os.makedirs(app.config['UPLOAD_FOLDER'])
-    app.run(debug=True)
+    # debug=True to see errors, use_reloader=False prevents multiple processes
+    app.run(host="127.0.0.1", port=5000, debug=True, use_reloader=False)
