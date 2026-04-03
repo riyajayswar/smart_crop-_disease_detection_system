@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>CropCare AI</title>
 
 <!-- Google Fonts -->
@@ -13,6 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+/* ===================== RESET ===================== */
 * {
     margin: 0;
     padding: 0;
@@ -25,7 +25,7 @@ body {
     color: #333;
 }
 
-/* NAVBAR */
+/* ===================== NAVBAR ===================== */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -53,7 +53,7 @@ body {
     color: #2e7d32;
 }
 
-/* HERO */
+/* ===================== HERO ===================== */
 .hero {
     text-align: center;
     padding: 80px 20px;
@@ -83,7 +83,7 @@ body {
     background: #1b5e20;
 }
 
-/* UPLOAD */
+/* ===================== UPLOAD ===================== */
 .upload {
     text-align: center;
     padding: 40px 20px;
@@ -91,18 +91,52 @@ body {
 
 .upload-box {
     border: 2px dashed #2e7d32;
-    padding: 40px;
-    border-radius: 10px;
+    width: 350px;               /* fixed width */
+    height: 350px;              /* fixed height */
+    max-width: 90vw;            /* responsive on mobile */
+    max-height: 90vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
     cursor: pointer;
-    transition: 0.3s;
+    margin: 0 auto;
+    background-color: #fafafa;
+    position: relative;
+    transition: background 0.3s, box-shadow 0.3s;
+    overflow: hidden;
 }
 
 .upload-box:hover {
-    background: #f1f8e9;
+    background-color: #f1f8e9;
+    box-shadow: 0 0 15px rgba(46,125,50,0.3);
 }
 
-.upload input {
-    display: none;
+.upload-box input {
+    display: none; /* hide file input */
+}
+
+.upload-text {
+    text-align: center;
+    pointer-events: none; /* ensure clicking goes to input */
+}
+
+.upload-text i {
+    font-size: 40px;
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+.upload-text p {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Show uploaded file name */
+#file-name {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #555;
 }
 
 .upload button {
@@ -112,9 +146,15 @@ body {
     color: white;
     border: none;
     border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* FEATURES */
+.upload button:hover {
+    background: #1b5e20;
+}
+
+/* ===================== FEATURES ===================== */
 .features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -141,7 +181,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* RESULT */
+/* ===================== RESULT ===================== */
 .result {
     text-align: center;
     padding: 40px;
@@ -155,7 +195,7 @@ body {
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* FOOTER */
+/* ===================== FOOTER ===================== */
 footer {
     background: #2e7d32;
     color: white;
@@ -168,16 +208,20 @@ footer i {
     cursor: pointer;
 }
 
-/* RESPONSIVE */
+/* ===================== RESPONSIVE ===================== */
 @media(max-width:768px){
     .navbar {
         flex-direction: column;
         align-items: center;
     }
+
+    .upload-box {
+        width: 80vw;
+        height: 80vw;
+    }
 }
 </style>
 </head>
-
 <body>
 
 <!-- NAVBAR -->
@@ -202,13 +246,14 @@ footer i {
 <!-- UPLOAD -->
 <section class="upload" id="upload">
     <form method="POST" action="/" enctype="multipart/form-data">
-        
-        <label class="upload-box">
-            <p><i class="fa fa-upload"></i> Drag & Drop or Click to Upload</p>
-            <input type="file" name="file" required>
+        <label class="upload-box" id="uploadBox">
+            <input type="file" name="file" id="fileInput" required>
+            <div class="upload-text">
+                <i class="fa fa-upload"></i>
+                <p>Drag & Drop or Click to Upload</p>
+            </div>
         </label>
-
-        <br>
+        <div id="file-name"></div>
         <button type="submit" onclick="showLoading()">Analyze Crop</button>
         <p style="margin-top:10px;">Upload a clear image of crop leaf</p>
     </form>
@@ -221,17 +266,9 @@ footer i {
 
 <!-- RESULT -->
 <section class="result">
-
     {% if image_path %}
-        <h3>Uploaded Image</h3>
-        <img src="/{{ image_path }}" width="300">
+        <img src="{{ image_path }}" width="250"><br><br>
     {% endif %}
-
-    {% if prediction %}
-        <h3>{{ prediction }}</h3>
-    {% endif %}
-
-</section>
 
     {% if prediction %}
     <div class="result-box">
@@ -285,6 +322,18 @@ footer i {
 function showLoading(){
     document.getElementById("loading").style.display = "block";
 }
+
+// Show file name after selection
+const fileInput = document.getElementById('fileInput');
+const fileNameDiv = document.getElementById('file-name');
+
+fileInput.addEventListener('change', () => {
+    if(fileInput.files.length > 0){
+        fileNameDiv.textContent = "Selected file: " + fileInput.files[0].name;
+    } else {
+        fileNameDiv.textContent = "";
+    }
+});
 </script>
 
 </body>
