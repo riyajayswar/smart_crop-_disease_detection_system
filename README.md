@@ -26,16 +26,18 @@ The goal is to help farmers detect diseases early and take preventive actions.
 ## 📁 Project Structure
 smart-crop-disease-detection/
 │
-├── dataset/
-│
-├── model/
-│   ├── train_model.py
-│   ├── predict.py
-│   └── cnn_model.h5
+├── dataset/                 # (ignored in git)
+│   └── train/
 │
 ├── preprocessing/
 │   ├── preprocess.py
-│   └── dataloader.py
+│   └── data_loader.py      
+│
+├── model/
+│   ├── model_architecture.py   
+│   ├── train_model.py
+│   ├── predict.py
+│   └── cnn_model.h5           # (generated after training)
 │
 ├── webapp/
 │   ├── templates/
@@ -46,9 +48,9 @@ smart-crop-disease-detection/
 │   │
 │   └── app.py
 │
-├── notebooks/          # For experiments (Jupyter notebooks)
+├── notebooks/
 │
-├── config.py           # Project configurations (paths, parameters)
+├── config.py
 │
 ├── requirements.txt
 ├── README.md
