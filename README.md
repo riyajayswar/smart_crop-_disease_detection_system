@@ -56,7 +56,7 @@ smart_crop_disease_detection_system/
 ---
 
 ## ⚙️ Installation & Setup
-
+```plaintext
 ### 1️⃣ Clone the repository
 git clone https://github.com/yourusername/smart_crop_disease_detection_system.git
 cd smart_crop_disease_detection_system
@@ -75,8 +75,10 @@ python -m model.batch_test
 
 6️⃣ Predict single image
 python model/predict.py
+```
 
 
+```plaintext
 📊 Model Performance
 Training Accuracy: ~77%
 Test Accuracy: ~75–80%
@@ -116,3 +118,4 @@ Web App Integration: Niharika Saroj
 ⭐ If you like this project
 
 Give a ⭐ on the repository and share it!
+```
