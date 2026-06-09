@@ -58,7 +58,6 @@ smart_crop_disease_detection_system/
 ## ⚙️ Installation & Setup
 
 ### 1️⃣ Clone the repository
-```bash
 git clone https://github.com/yourusername/smart_crop_disease_detection_system.git
 cd smart_crop_disease_detection_system
 
