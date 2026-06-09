@@ -36,5 +36,5 @@ def batch_test(folder_path):
     print("======================")
 
 if __name__ == "__main__":
-    test_folder = "dataset/train"
+    test_folder = "dataset/test"
     batch_test(test_folder)
