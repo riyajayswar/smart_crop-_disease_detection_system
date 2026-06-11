@@ -5,10 +5,8 @@ __pycache__/
 # Virtual environment
 venv/
 
-# Dataset (raw images)
+# Dataset
 dataset/raw/
-
-# Optional: ignore full dataset if large
 dataset/train/
 dataset/test/
 dataset/validation/
@@ -16,6 +14,7 @@ dataset/validation/
 # Model files
 *.h5
 *.pkl
+*.npy
 
 # System files
 .DS_Store
