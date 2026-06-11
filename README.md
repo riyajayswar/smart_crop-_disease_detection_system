@@ -23,7 +23,7 @@ The goal is to help farmers detect diseases early and take preventive actions.
 
 ---
 
-## 📁 Project Structure
+## 📂 Project Structure
 
 ```plaintext
 smart_crop_disease_detection_system/
@@ -34,30 +34,60 @@ smart_crop_disease_detection_system/
 │   └── test/
 │
 ├── model/
-│   ├── train_model.py
+│   ├── batch_test.py
+│   ├── classes.npy
+│   ├── cnn_model.h5
+│   ├── __init__.py
+│   ├── model_architecture.py
 │   ├── predict.py
-│   └── cnn_model.h5
+│   └── train_model.py
 │
 ├── preprocessing/
-│   ├── split_dataset.py
-│   └── data_loader.py
+│   ├── data_loader.py
+│   ├── __init__.py
+│   ├── preprocess.py
+│   └── split_dataset.py
 │
 ├── webapp/
-│   ├── app.py
-│   └── templates/
+│   ├── static/
+│   │   ├── images/
+│   │   └── uploads/
+│   │
+│   ├── templates/
+│   │   └── index.html
+│   │
+│   └── app.py
 │
 ├── notebooks/
+│
+├── .gitignore
 ├── config.py
-├── requirements.txt
-└── README.md
+├── README.md
+└── requirements.txt
 ```
+## 📁 Folder Description
 
+| Folder/File | Description |
+|------------|-------------|
+| dataset/ | Contains raw, training, and testing image datasets |
+| preprocessing/ | Data preprocessing, loading, and train-test splitting |
+| model/ | CNN architecture, training, prediction, and evaluation scripts |
+| webapp/ | Flask web application for disease prediction |
+| notebooks/ | Jupyter notebooks used for experimentation |
+| config.py | Project configuration settings |
+| requirements.txt | Project dependencies |
+| README.md | Project documentation |
+
+## Model Files
+
+The trained model files (`cnn_model.h5` and `classes.npy`) are shared separately due to GitHub file size limitations.
 
 ---
 
+
 ## ⚙️ Installation & Setup
 ```plaintext
-### 1️⃣ Clone the repository
+1️⃣ Clone the repository
 git clone https://github.com/yourusername/smart_crop_disease_detection_system.git
 cd smart_crop_disease_detection_system
 
@@ -81,7 +111,7 @@ python model/predict.py
 ```plaintext
 📊 Model Performance
 Training Accuracy: ~77%
-Test Accuracy: ~75–80%
+Test Accuracy: 73.13%
 Model Type: CNN (Convolutional Neural Network)
 
 
