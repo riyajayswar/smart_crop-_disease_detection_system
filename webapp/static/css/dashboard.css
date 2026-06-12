@@ -1,0 +1,71 @@
+.upload-container{
+margin-top:20px;
+}
+
+.drag-area{
+border:3px dashed #22c55e;
+border-radius:20px;
+padding:50px;
+text-align:center;
+background:#f9fff9;
+cursor:pointer;
+transition:0.3s;
+}
+
+.drag-area:hover{
+background:#f0fff4;
+}
+
+.drag-area i{
+font-size:70px;
+color:#22c55e;
+margin-bottom:15px;
+}
+
+.drag-area h3{
+margin-bottom:10px;
+}
+
+.drag-area span{
+display:block;
+margin:10px 0;
+color:#777;
+}
+
+.drag-area button{
+padding:12px 24px;
+border:none;
+border-radius:10px;
+background:#16a34a;
+color:white;
+cursor:pointer;
+}
+
+.preview-container{
+margin-top:25px;
+display:flex;
+justify-content:center;
+}
+
+.preview-container img{
+max-width:350px;
+display:none;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,0.15);
+}
+
+.analyze-btn{
+display:block;
+margin:25px auto;
+padding:15px 40px;
+font-size:18px;
+border:none;
+border-radius:12px;
+background:#15803d;
+color:white;
+cursor:pointer;
+}
+
+.analyze-btn:hover{
+transform:translateY(-2px);
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Crop Disease Detection Dashboard</title>
+
+```
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+```
+
+</head>
+
+<body>
+
+```
+<div class="dashboard-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <h2>🌱 Smart Crop AI</h2>
+
+        <ul>
+            <li>
+                <a href="/dashboard">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="/predict">
+                    <i class="fas fa-leaf"></i>
+                    Disease Detection
+                </a>
+            </li>
+
+            <li>
+                <a href="/history">
+                    <i class="fas fa-history"></i>
+                    History
+                </a>
+            </li>
+
+            <li>
+                <a href="/reports">
+                    <i class="fas fa-chart-line"></i>
+                    Reports
+                </a>
+            </li>
+
+            <li>
+                <a href="/login">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <header>
+            <h1>Crop Disease Detection Dashboard</h1>
+            <p>Upload crop images and detect diseases using AI.</p>
+        </header>
+
+        <!-- Statistics Cards -->
+        <section class="cards">
+
+            <div class="card">
+                <h3>Total Scans</h3>
+                <p>125</p>
+            </div>
+
+            <div class="card">
+                <h3>Healthy Crops</h3>
+                <p>78</p>
+            </div>
+
+            <div class="card">
+                <h3>Diseased Crops</h3>
+                <p>47</p>
+            </div>
+
+        </section>
+
+        <!-- Upload Section -->
+        <section class="upload-section">
+
+            <h2>AI Disease Scanner</h2>
+
+            <div class="upload-container">
+
+                <form id="uploadForm">
+
+                    <div class="drag-area" id="dropArea">
+
+                        <i class="fas fa-cloud-upload-alt"></i>
+
+                        <h3>Drag & Drop Image</h3>
+
+                        <span>OR</span>
+
+                        <button type="button" id="browseBtn">
+                            Browse Files
+                        </button>
+
+                        <input
+                            type="file"
+                            id="fileInput"
+                            hidden
+                            accept="image/*">
+
+                    </div>
+
+                    <div class="preview-container">
+
+                        <img
+                            id="previewImage"
+                            src=""
+                            alt="Preview">
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="analyze-btn">
+
+                        Analyze Crop
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+        <!-- Results Section -->
+        <section class="results">
+
+            <h2>Prediction Result</h2>
+
+            <div class="result-box">
+
+                <p>
+                    Upload an image to see disease prediction.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+```
+
+</body>
+</html>
