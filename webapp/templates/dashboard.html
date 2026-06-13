@@ -1,171 +1,293 @@
-<!DOCTYPE html>
+{% extends "layout.html" %}
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Crop Disease Detection Dashboard</title>
+{% block title %}
+Dashboard
+{% endblock %}
 
-```
+{% block styles %}
 <link rel="stylesheet"
-      href="{{ url_for('static', filename='css/dashboard.css') }}">
+href="{{ url_for('static', filename='css/dashboard.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
 
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-```
+{% block content %}
 
-</head>
+<section class="dashboard">
 
-<body>
+    <!-- Hero Banner -->
 
-```
-<div class="dashboard-container">
+    <div class="dashboard-topbar">
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
+         <input
+            type="text"
+            placeholder="Search anything...">
 
-        <h2>🌱 Smart Crop AI</h2>
+        <div class="topbar-actions">
 
-        <ul>
-            <li>
-                <a href="/dashboard">
-                    <i class="fas fa-home"></i>
-                    Dashboard
-                </a>
-            </li>
+            <button id="themeBtn">
 
-            <li>
-                <a href="/predict">
-                    <i class="fas fa-leaf"></i>
-                    Disease Detection
-                </a>
-            </li>
+                🌙
 
-            <li>
-                <a href="/history">
-                    <i class="fas fa-history"></i>
-                    History
-                </a>
-            </li>
+            </button>
 
-            <li>
-                <a href="/reports">
-                    <i class="fas fa-chart-line"></i>
-                    Reports
-                </a>
-            </li>
+            <button>
 
-            <li>
-                <a href="/login">
-                    <i class="fas fa-sign-out-alt"></i>
-                    Logout
-                </a>
-            </li>
-        </ul>
+                🔔
 
-    </aside>
+                </button>
 
-    <!-- Main Content -->
-    <main class="main-content">
+            <i class="fa-solid fa-user-circle profile-icon"></i>
 
-        <header>
-            <h1>Crop Disease Detection Dashboard</h1>
-            <p>Upload crop images and detect diseases using AI.</p>
-        </header>
+        </div>
 
-        <!-- Statistics Cards -->
-        <section class="cards">
+    </div>
 
-            <div class="card">
-                <h3>Total Scans</h3>
-                <p>125</p>
+    <div class="hero-dashboard">
+
+        <div>
+
+            <span class="welcome-badge">
+                🌱 Agriculture Intelligence Platform
+            </span>
+
+            <h1>
+                Welcome Back, Niharika
+            </h1>
+
+            <p>
+                Monitor crop health, disease risks,
+                and AI insights in real time.
+            </p>
+
+        </div>
+
+        <div class="hero-score">
+
+            <h2>98.2%</h2>
+
+            <span>
+                Detection Accuracy
+            </span>
+
+        </div>
+
+    </div>
+
+    <!-- KPI CARDS -->
+
+    <div class="kpi-grid">
+
+        <div class="kpi-card">
+            <h3>Total Scans</h3>
+            <h1>50,248</h1>
+        </div>
+
+        <div class="kpi-card">
+            <h3>Diseases Detected</h3>
+            <h1>2,416</h1>
+        </div>
+
+        <div class="kpi-card">
+            <h3>Healthy Crops</h3>
+            <h1>47,832</h1>
+        </div>
+
+        <div class="kpi-card">
+            <h3>Active Farmers</h3>
+            <h1>8,120</h1>
+        </div>
+
+    </div>
+
+    <!-- MAIN GRID -->
+
+    <div class="dashboard-grid">
+
+        <div class="chart-card">
+
+            <h2>
+                Disease Detection Trends
+            </h2>
+
+            <canvas id="diseaseChart"></canvas>
+
+        </div>
+
+        <div class="weather-card">
+
+            <h2>
+                Weather Intelligence
+            </h2>
+
+            <div class="weather-temp">
+                28°C
             </div>
 
-            <div class="card">
-                <h3>Healthy Crops</h3>
-                <p>78</p>
-            </div>
+            <p>Humidity: 76%</p>
+            <p>Rain Chance: 40%</p>
 
-            <div class="card">
-                <h3>Diseased Crops</h3>
-                <p>47</p>
-            </div>
+        </div>
 
-        </section>
+    </div>
 
-        <!-- Upload Section -->
-        <section class="upload-section">
+    <!-- SECOND GRID -->
 
-            <h2>AI Disease Scanner</h2>
+    <div class="dashboard-grid">
 
-            <div class="upload-container">
+        <div class="health-card">
 
-                <form id="uploadForm">
+            <h2>
+                Crop Health Score
+            </h2>
 
-                    <div class="drag-area" id="dropArea">
+            <div class="health-circle">
 
-                        <i class="fas fa-cloud-upload-alt"></i>
-
-                        <h3>Drag & Drop Image</h3>
-
-                        <span>OR</span>
-
-                        <button type="button" id="browseBtn">
-                            Browse Files
-                        </button>
-
-                        <input
-                            type="file"
-                            id="fileInput"
-                            hidden
-                            accept="image/*">
-
-                    </div>
-
-                    <div class="preview-container">
-
-                        <img
-                            id="previewImage"
-                            src=""
-                            alt="Preview">
-
-                    </div>
-
-                    <button
-                        type="submit"
-                        class="analyze-btn">
-
-                        Analyze Crop
-
-                    </button>
-
-                </form>
-
-            </div>
-
-        </section>
-
-        <!-- Results Section -->
-        <section class="results">
-
-            <h2>Prediction Result</h2>
-
-            <div class="result-box">
-
-                <p>
-                    Upload an image to see disease prediction.
-                </p>
+                <span>92%</span>
 
             </div>
 
-        </section>
+        </div>
 
-    </main>
+        <div class="risk-card">
+
+            <h2>Disease Risk Level</h2>
+
+            <div class="risk-bar">
+
+                <div class="risk-progress"></div>
+
+            </div>
+
+            <p>Moderate Risk</p>
+
+        </div>
+
+        <div class="insights-card">
+
+            <h2>
+                AI Recommendations
+            </h2>
+
+            <ul>
+
+                <li>
+                    Apply organic fungicide on tomatoes.
+                </li>
+
+                <li>
+                    Monitor humidity levels.
+                </li>
+
+                <li>
+                    Disease risk expected next week.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- RECENT ACTIVITY -->
+
+    <div class="activity-card">
+
+        <h2>
+            Recent Disease Scans
+        </h2>
+
+        <table>
+
+            <tr>
+                <th>Crop</th>
+                <th>Disease</th>
+                <th>Confidence</th>
+            </tr>
+
+            <tr>
+                <td>Tomato</td>
+                <td>Leaf Blight</td>
+                <td>98%</td>
+            </tr>
+
+            <tr>
+                <td>Potato</td>
+                <td>Healthy</td>
+                <td>99%</td>
+            </tr>
+
+            <tr>
+                <td>Corn</td>
+                <td>Rust Disease</td>
+                <td>95%</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div class="live-feed">
+
+        <h2>
+            Live Activity Feed
+        </h2>
+
+        <div class="feed-item">
+            🍅 Tomato scan completed
+        </div>
+
+        <div class="feed-item">
+            🌽 Corn disease detected
+        </div>
+
+        <div class="feed-item">
+            🌧 Weather alert generated
+        </div>
+
+        <div class="feed-item">
+            🤖 AI recommendation generated
+        </div>
+
+    </div>
+
+</section>
+
+<div class="premium-banner">
+
+    <div>
+
+        <span class="banner-tag">
+            🚀 AI Agriculture Intelligence
+        </span>
+
+        <h1>
+            Welcome Back, Niharika 👋
+        </h1>
+
+        <p>
+            Your crops are being monitored by AgriVision AI.
+        </p>
+
+    </div>
+
+    <div class="banner-score">
+
+        <h2>98.2%</h2>
+
+        <span>AI Accuracy</span>
+
+    </div>
 
 </div>
 
-<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
-```
+<div class="ai-assistant">
 
-</body>
-</html>
+    <i class="fa-solid fa-robot"></i>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

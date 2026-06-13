@@ -1,0 +1,300 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Disease Detection
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet"
+href="{{ url_for('static',
+filename='css/detection.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+
+    <h1>Disease Detection Center</h1>
+
+    <p>
+        Upload crop images and receive AI-powered
+        disease diagnosis instantly.
+    </p>
+
+</div>
+
+<div class="detection-grid">
+
+    <!-- Upload Section -->
+
+    <div class="upload-card card">
+
+        <h2>Upload Crop Image</h2>
+
+        <form
+            id="uploadForm"
+            action="/predict"
+            method="POST"
+            enctype="multipart/form-data">
+
+            <div class="drop-zone" id="dropZone">
+
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                <h3>Drag & Drop Image</h3>
+
+                <p>or click to browse</p>
+
+                <input
+                    type="file"
+                    id="imageInput"
+                    name="image"
+                    accept="image/*"
+                    hidden>
+
+            </div>
+
+            <div class="upload-actions">
+
+                <button
+                    type="button"
+                    id="browseBtn"
+                    class="primary-btn">
+
+                    Browse Files
+
+                </button>
+
+                <button
+                    type="button"
+                    class="secondary-btn">
+
+                    <i class="fa-solid fa-camera"></i>
+
+                    Camera
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <!-- Preview -->
+
+    <div class="preview-card card">
+
+        <h2>Image Preview</h2>
+
+        <img
+            id="previewImage"
+            src=""
+            alt="Preview">
+
+        <div class="preview-tools">
+
+            <button>
+                <i class="fa-solid fa-magnifying-glass-plus"></i>
+            </button>
+
+            <button>
+                <i class="fa-solid fa-rotate-right"></i>
+            </button>
+
+            <button>
+                <i class="fa-solid fa-crop"></i>
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- AI Processing -->
+
+<div class="processing card">
+
+    <div class="processing-header">
+
+        <h2>AI Processing Engine</h2>
+
+        <span id="progressValue">0%</span>
+
+    </div>
+
+    <div class="progress-bar">
+
+        <div
+            id="progressFill"
+            class="progress-fill">
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Results -->
+
+<div class="results-grid">
+
+    <div class="card result-card">
+
+        <h2>Prediction Result</h2>
+
+        <div class="result-item">
+
+            <span>Crop</span>
+            <strong id="cropName">
+                Tomato
+            </strong>
+
+        </div>
+
+        <div class="result-item">
+
+            <span>Disease</span>
+
+            <strong id="diseaseName">
+                Early Blight
+            </strong>
+
+        </div>
+
+        <div class="result-item">
+
+            <span>Confidence</span>
+
+            <strong id="confidence">
+                96.4%
+            </strong>
+
+        </div>
+
+        <div class="result-item">
+
+            <span>Severity</span>
+
+            <strong class="severity">
+                Moderate
+            </strong>
+
+        </div>
+
+    </div>
+
+    <!-- Confidence Gauge -->
+
+    <div class="card gauge-card">
+
+        <h2>AI Confidence</h2>
+
+        <div class="gauge">
+
+            <svg width="220" height="120">
+
+                <path
+                    d="M20 100 A90 90 0 0 1 200 100"
+                    fill="none"
+                    stroke="#ddd"
+                    stroke-width="15"/>
+
+                <path
+                    d="M20 100 A90 90 0 0 1 200 100"
+                    fill="none"
+                    stroke="#10b981"
+                    stroke-width="15"
+                    stroke-dasharray="240"
+                    stroke-dashoffset="15"/>
+
+            </svg>
+
+            <h1>96%</h1>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Treatment Recommendation -->
+
+<div class="card treatment-card">
+
+    <h2>Treatment Recommendation</h2>
+
+    <div class="treatment-grid">
+
+        <div>
+
+            <h3>Organic Solution</h3>
+
+            <ul>
+
+                <li>Neem Oil Spray</li>
+                <li>Remove infected leaves</li>
+                <li>Improve air circulation</li>
+
+            </ul>
+
+        </div>
+
+        <div>
+
+            <h3>Chemical Solution</h3>
+
+            <ul>
+
+                <li>Copper Fungicide</li>
+                <li>Chlorothalonil Spray</li>
+
+            </ul>
+
+        </div>
+
+        <div>
+
+            <h3>Prevention</h3>
+
+            <ul>
+
+                <li>Crop Rotation</li>
+                <li>Balanced Irrigation</li>
+                <li>Regular Monitoring</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="action-buttons">
+
+        <button class="primary-btn">
+
+            <i class="fa-solid fa-download"></i>
+
+            Download Report
+
+        </button>
+
+        <button class="secondary-btn">
+
+            <i class="fa-solid fa-floppy-disk"></i>
+
+            Save Analysis
+
+        </button>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static',
+filename='js/detection.js') }}"></script>
+{% endblock %}
