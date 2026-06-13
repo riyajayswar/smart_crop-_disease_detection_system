@@ -1,0 +1,364 @@
+{% extends "layout.html" %}
+
+{% block title %}
+AgriVision AI
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/landing.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="aurora"></div>
+
+    <div class="hero-content">
+
+        <span class="hero-badge">
+            🌱 AI-Powered Agriculture Intelligence
+        </span>
+
+        <h1>
+            Detect Crop Diseases
+            Before They Damage
+            Your Harvest
+        </h1>
+
+        <p>
+            Deep Learning • Computer Vision • Smart Farming Analytics
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="/detect" class="btn btn-primary">
+                Start Detection
+            </a>
+
+            <a href="/dashboard" class="btn btn-secondary">
+                Live Demo
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="floating-card card-1">
+        <h3>98.2%</h3>
+        <p>Detection Accuracy</p>
+    </div>
+
+    <div class="floating-card card-2">
+        <h3>50K+</h3>
+        <p>Disease Scans</p>
+    </div>
+
+    <div class="floating-card card-3">
+        <h3>20+</h3>
+        <p>Crop Types</p>
+    </div>
+
+</section>
+
+<!-- Statistics Section -->
+
+<section class="stats-section">
+
+    <div class="stat-card">
+
+        <h2 class="counter" data-target="50000">0</h2>
+
+        <p>Disease Scans</p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h2 class="counter" data-target="98">0</h2>
+
+        <p>Detection Accuracy</p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h2 class="counter" data-target="20">0</h2>
+
+        <p>Crop Types</p>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h2 class="counter" data-target="10">0</h2>
+
+        <p>Disease Categories</p>
+
+    </div>
+
+</section>
+
+<!-- Features -->
+
+<section class="features-section">
+
+    <h2>
+        Powerful AI Features
+    </h2>
+
+    <p>
+        Advanced agriculture intelligence
+        powered by AI and Computer Vision.
+    </p>
+
+    <div class="features-grid">
+
+        <div class="feature-card">
+            🤖
+            <h3>AI Disease Detection</h3>
+        </div>
+
+        <div class="feature-card">
+            🌦️
+            <h3>Weather Intelligence</h3>
+        </div>
+
+        <div class="feature-card">
+            📈
+            <h3>Yield Prediction</h3>
+        </div>
+
+        <div class="feature-card">
+            🧠
+            <h3>AI Assistant</h3>
+        </div>
+
+        <div class="feature-card">
+            🔬
+            <h3>Disease Severity Analysis</h3>
+        </div>
+
+        <div class="feature-card">
+            📷
+            <h3>Real-Time Camera Scan</h3>
+        </div>
+
+        <div class="feature-card">
+            🌱
+            <h3>Crop Health Monitoring</h3>
+        </div>
+
+        <div class="feature-card">
+            🚨
+            <h3>Early Warning System</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- How It Works -->
+
+<section class="timeline-section">
+
+    <h2>
+        How AgriVision Works
+    </h2>
+
+    <div class="timeline">
+
+        <div class="step">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <h3>Upload Image</h3>
+
+        </div>
+
+        <div class="step">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <h3>AI Analysis</h3>
+
+        </div>
+
+        <div class="step">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <h3>Disease Detection</h3>
+
+        </div>
+
+        <div class="step">
+
+            <div class="step-number">
+                4
+            </div>
+
+            <h3>Treatment Plan</h3>
+
+        </div>
+
+    </div>
+
+    <!-- Dashboard Preview -->
+
+<section class="dashboard-preview">
+
+    <div class="preview-content">
+
+        <span class="preview-tag">
+            AI Intelligence Dashboard
+        </span>
+
+        <h2>
+            Everything Farmers Need
+            In One Platform
+        </h2>
+
+        <p>
+            Disease Detection, Weather Intelligence,
+            Analytics, Yield Prediction and AI Guidance.
+        </p>
+
+    </div>
+
+    <div class="dashboard-mockup">
+
+        <div class="mockup-header">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+        <div class="mockup-body">
+
+            <div class="mockup-card"></div>
+            <div class="mockup-card"></div>
+            <div class="mockup-card"></div>
+            <div class="mockup-card"></div>
+
+        </div>
+
+    </div>
+
+    <section class="testimonials">
+
+    <h2>
+        Trusted By Farmers & Researchers
+    </h2>
+
+    <div class="testimonial-grid">
+
+        <div class="testimonial-card">
+
+            <p>
+                AgriVision helped identify crop diseases
+                before they spread.
+            </p>
+
+            <h4>
+                Rajesh Kumar
+            </h4>
+
+            <span>
+                Farmer
+            </span>
+
+        </div>
+
+        <div class="testimonial-card">
+
+            <p>
+                Excellent AI-based diagnosis system
+                for agriculture research.
+            </p>
+
+            <h4>
+                Dr. Sharma
+            </h4>
+
+            <span>
+                Agriculture Scientist
+            </span>
+
+        </div>
+
+        <div class="testimonial-card">
+
+            <p>
+                Accurate predictions and modern UI.
+            </p>
+
+            <h4>
+                Niharika Saroj
+            </h4>
+
+            <span>
+                Student Researcher
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+<div class="ai-orb">
+
+    <i class="fa-solid fa-robot"></i>
+
+</div>
+
+<footer class="footer">
+
+    <div>
+
+        <h3>
+            🌱 AgriVision AI
+        </h3>
+
+        <p>
+            Smart Crop Disease Detection Platform
+        </p>
+
+    </div>
+
+    <div>
+
+        <a href="#">
+            About
+        </a>
+
+        <a href="#">
+            Contact
+        </a>
+
+        <a href="#">
+            Privacy
+        </a>
+
+    </div>
+
+</footer>
+{% endblock %}
+
+{% block scripts %}
+
+<script src="{{ url_for('static',
+filename='js/landing.js') }}">
+</script>
+
+{% endblock %}
