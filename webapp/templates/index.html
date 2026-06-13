@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CropCare AI</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #e8f5e9, #ffffff);
+    color: #333;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: white;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.navbar h2 { color: #2e7d32; font-weight: 600; font-size: 28px; }
+.navbar ul { display: flex; list-style: none; gap: 25px; }
+.navbar ul li { cursor: pointer; transition: 0.3s; font-weight: 500; }
+.navbar ul li:hover { color: #1b5e20; }
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 { font-size: 42px; color: #2e7d32; margin-bottom: 15px; }
+.hero p { margin-bottom: 25px; font-size: 18px; }
+.hero button {
+    padding: 14px 30px;
+    background: linear-gradient(90deg, #43a047, #66bb6a);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+.hero button:hover { transform: scale(1.05); background: linear-gradient(90deg, #1b5e20, #388e3c); }
+
+/* UPLOAD */
+.upload {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.upload-box {
+    margin: 0 auto;
+    width: 280px;
+    height: 180px;
+    border: 2px dashed #2e7d32;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+    flex-direction: column;
+    background: #f7fff7;
+}
+.upload-box:hover { background: #e0f2e9; box-shadow: 0 10px 20px rgba(46,125,50,0.2); }
+.upload-box i { font-size: 36px; color: #2e7d32; margin-bottom: 12px; }
+.upload input { display: none; }
+.upload button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+}
+.upload button:hover { background: #1b5e20; }
+
+/* RESULT */
+.result {
+    text-align: center;
+    padding: 40px 20px;
+}
+.result-box {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    display: inline-block;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+.result-box:hover { transform: translateY(-5px); }
+
+/* FEATURES */
+.features {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 50px 20px;
+}
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    width: 220px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+.card:hover { transform: translateY(-10px); box-shadow: 0 12px 25px rgba(0,0,0,0.15); }
+.card i { font-size: 36px; color: #2e7d32; margin-bottom: 12px; }
+
+/* FOOTER */
+footer {
+    background: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+footer i { margin: 0 12px; cursor: pointer; transition: 0.3s; }
+footer i:hover { color: #c8e6c9; }
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .navbar { flex-direction: column; gap: 15px; }
+    .features { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2>CropCare AI</h2>
+    <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Upload</li>
+        <li>Results</li>
+        <li>Contact</li>
+    </ul>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Smart Crop Disease Detection System</h1>
+    <p>Detect plant diseases instantly using AI</p>
+    <button onclick="document.getElementById('upload').scrollIntoView({behavior:'smooth'})">Upload Image</button>
+</section>
+
+<!-- UPLOAD -->
+<section class="upload" id="upload">
+    <form method="POST" action="/" enctype="multipart/form-data">
+        <label class="upload-box">
+            <i class="fa fa-upload"></i>
+            <p>Drag & Drop or Click to Upload</p>
+            <input type="file" name="file" required>
+        </label>
+        <br>
+        <button type="submit" onclick="showLoading()">Analyze Crop</button>
+        <p style="margin-top:10px;">Upload a clear image of crop leaf</p>
+    </form>
+</section>
+
+<!-- LOADING -->
+<div id="loading" style="display:none; text-align:center; margin-top:20px;">
+    <p>Analyzing...</p>
+</div>
+
+<!-- RESULT -->
+<section class="result">
+    {% if image_path %}
+        <img src="{{ image_path }}" width="250"><br><br>
+    {% endif %}
+
+    {% if prediction %}
+    <div class="result-box">
+        <h3>Disease: {{ prediction }}</h3>
+        <p>Confidence: 95%</p>
+        <p>Suggested Treatment: Use organic pesticide</p>
+    </div>
+    {% endif %}
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+    <div class="card">
+        <i class="fa fa-bolt"></i>
+        <h3>Fast Detection</h3>
+        <p>Instant results in seconds</p>
+    </div>
+
+    <div class="card">
+        <i class="fa fa-brain"></i>
+        <h3>AI Powered</h3>
+        <p>Advanced machine learning model</p>
+    </div>
+
+    <div class="card">
+        <i class="fa fa-check-circle"></i>
+        <h3>Accurate</h3>
+        <p>High accuracy predictions</p>
+    </div>
+
+    <div class="card">
+        <i class="fa fa-leaf"></i>
+        <h3>Easy to Use</h3>
+        <p>Simple and user-friendly UI</p>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>Contact: cropcare@gmail.com</p>
+    <div>
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-linkedin"></i>
+    </div>
+    <p>© 2026 CropCare AI</p>
+</footer>
+
+<!-- JS -->
+<script>
+function showLoading(){
+    document.getElementById("loading").style.display = "block";
+}
+</script>
+
+</body>
+</html>
