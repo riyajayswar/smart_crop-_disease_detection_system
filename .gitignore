@@ -14,7 +14,6 @@ dataset/validation/
 # Model files
 *.h5
 *.pkl
-*.npy
 
 # System files
 .DS_Store
