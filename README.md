@@ -111,7 +111,7 @@ python model/predict.py
 ```plaintext
 📊 Model Performance
 Training Accuracy: ~77%
-Test Accuracy: 73.13%
+Test Accuracy: 74.29%
 Model Type: CNN (Convolutional Neural Network)
 
 
