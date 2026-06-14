@@ -78,23 +78,264 @@ href="{{ url_for('static', filename='css/dashboard.css') }}">
     <div class="kpi-grid">
 
         <div class="kpi-card">
+
+            <div class="kpi-top">
+                <i class="fa-solid fa-camera"></i>
+                <span class="positive">+12%</span>
+            </div>
+
             <h3>Total Scans</h3>
-            <h1>50,248</h1>
-        </div>
 
+            <h1 class="counter" data-target="50248">0</h1>
+
+            <p>This Month</p>
+
+        </div>
+    
         <div class="kpi-card">
+
+            <div class="kpi-top">
+                <i class="fa-solid fa-virus"></i>
+                <span class="negative">-3%</span>
+            </div>
+
             <h3>Diseases Detected</h3>
-            <h1>2,416</h1>
+
+            <h1 class="counter" data-target="2416">0</h1>
+
+            <p>Across All Crops</p>
+
         </div>
 
         <div class="kpi-card">
+
+            <div class="kpi-top">
+                <i class="fa-solid fa-seedling"></i>
+                <span class="positive">+8%</span>
+            </div>
+
             <h3>Healthy Crops</h3>
-            <h1>47,832</h1>
+
+            <h1 class="counter" data-target="47832">0</h1>
+
+            <p>Current Season</p>
+
         </div>
 
         <div class="kpi-card">
+
+            <div class="kpi-top">
+                <i class="fa-solid fa-user-group"></i>
+                <span class="positive">+15%</span>
+            </div>
+
             <h3>Active Farmers</h3>
-            <h1>8,120</h1>
+
+            <h1 class="counter" data-target="8120">0</h1>
+
+            <p>Platform Users</p>
+
+        </div>
+
+    </div>
+
+    <!-- AI COMMAND CENTER -->
+
+    <div class="ai-command-center">
+
+        <div class="ai-status-card">
+
+            <div class="status-icon">
+                <i class="fa-solid fa-robot"></i>
+            </div>
+
+            <h3>AI System Status</h3>
+
+            <span class="status-active">
+                Active & Monitoring
+            </span>
+
+            <p>
+                CNN Model Running Normally
+            </p>
+
+        </div>
+
+        <div class="alert-card">
+
+            <div class="status-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+
+            <h3>Disease Alert</h3>
+
+            <span class="alert-high">
+                High Risk
+            </span>
+
+            <p>
+                Tomato Leaf Blight detected nearby
+            </p>
+
+        </div>
+
+        <div class="confidence-card">
+
+            <div class="status-icon">
+                <i class="fa-solid fa-brain"></i>
+            </div>
+
+            <h3>AI Confidence</h3>
+
+            <h1>98.2%</h1>
+
+            <p>
+                Model Prediction Confidence
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="smart-panel">
+
+        <div class="panel-card">
+
+            <h2>
+                🤖 Smart Recommendations
+            </h2>
+
+            <ul>
+
+                <li>
+                    Apply fungicide to tomato crops.
+                </li>
+
+                <li>
+                    Increase monitoring frequency.
+                </li>
+
+                <li>
+                    Schedule crop inspection.
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div class="panel-card">
+
+            <h2>
+                🚨 Early Disease Warning
+            </h2>
+
+            <p>
+                Humidity levels indicate increased
+                disease probability over the next
+                5 days.
+            </p>
+
+        </div>
+
+        <div class="panel-card">
+
+            <h2>
+                📡 Real-Time Monitoring
+            </h2>
+
+            <p>
+                Monitoring 8,120 active farmers
+                and 50,248 crop scans.
+            </p>
+
+        </div>
+
+    </div>
+   
+    <!-- AI ANALYTICS -->
+
+    <div class="ai-analytics-grid">
+
+        <!-- AI CONFIDENCE -->
+
+        <div class="gauge-card">
+
+            <div class="card-header">
+
+                <h2>AI Confidence</h2>
+
+                <span class="live-badge">
+                    LIVE
+                </span>
+
+            </div>
+
+            <div class="confidence-gauge">
+
+                <div class="gauge-inner">
+
+                    <h1>98%</h1>
+
+                    <span>
+                        Excellent
+                    </span>
+
+                </div>
+
+            </div>
+
+            <p>
+                Deep Learning Model Reliability
+            </p>
+
+        </div>        
+
+            <!-- DISEASE SEVERITY -->
+
+        <div class="severity-card">
+
+            <h2>
+                Disease Severity Analysis
+            </h2>
+
+            <div class="severity-scale">
+
+                <div class="severity-fill"></div>
+
+            </div>
+
+            <div class="severity-levels">
+
+                <span>🟢 Low</span>
+
+                <span>🟡 Moderate</span>
+
+                <span>🔴 High</span>
+
+            </div>
+
+            <h3>
+                Current Status:
+                Moderate (65%)
+            </h3>
+
+        </div>
+
+        <!-- SYSTEM MONITOR -->
+
+        <div class="system-card">
+
+            <h2>
+                Live System Monitoring
+            </h2>
+
+            <div class="monitor-item">
+
+                <span class="status-dot"></span>
+
+                CNN Model Online
+
+            </div>            
         </div>
 
     </div>
@@ -115,19 +356,115 @@ href="{{ url_for('static', filename='css/dashboard.css') }}">
 
         <div class="weather-card">
 
-            <h2>
-                Weather Intelligence
-            </h2>
+            <div class="weather-header">
 
-            <div class="weather-temp">
-                28°C
+                <h2>
+                    Weather Intelligence
+                </h2>
+
+                <i class="fa-solid fa-cloud-sun"></i>
+
             </div>
 
-            <p>Humidity: 76%</p>
-            <p>Rain Chance: 40%</p>
+            <div class="weather-temp">
+
+                28°C
+
+            </div>
+
+            <div class="weather-location">
+
+                Lucknow, India
+
+            </div>
+
+            <div class="weather-stats">
+
+                <div class="weather-item">
+
+                    <span>💧 Humidity</span>
+
+                    <strong>76%</strong>
+
+                </div>
+
+                <div class="weather-item">
+
+                    <span>🌧 Rain</span>
+
+                    <strong>40%</strong>
+
+                </div>
+
+                <div class="weather-item">
+
+                    <span>💨 Wind</span>
+
+                    <strong>12 km/h</strong>
+
+                </div>
+
+                <div class="weather-item">
+
+                    <span>☀ UV Index</span>
+
+                    <strong>5</strong>
+
+                </div>
+
+            </div>
+
+            <div class="forecast">
+
+                <div class="forecast-day">
+                    <span>Mon ☀️</span>
+                    <strong>29°</strong>
+                </div>
+
+                <div class="forecast-day">
+                    <span>Tue 🌤️</span>
+                    <strong>28°</strong>
+                </div>
+
+                <div class="forecast-day">
+                    <span>Wed 🌦️</span>
+                    <strong>27°</strong>
+                </div>
+
+                <div class="forecast-day">
+                    <span>Thu 🌧️</span>
+                    <strong>25°</strong>
+                </div>
+
+                <div class="forecast-day">
+                    <span>Fri ☀️</span>
+                    <strong>30°</strong>
+                </div>
+
+            </div>
 
         </div>
+        <div class="disease-alert-widget">
 
+            <h3>
+                🚨 Disease Risk Alert
+            </h3>
+
+            <p>
+                High humidity levels detected.
+            </p>
+
+            <p>
+                Tomato Blight Risk: HIGH
+            </p>
+
+            <div class="alert-bar">
+
+                <div class="alert-fill"></div>
+
+            </div>
+
+        </div>
     </div>
 
     <!-- SECOND GRID -->
@@ -145,20 +482,6 @@ href="{{ url_for('static', filename='css/dashboard.css') }}">
                 <span>92%</span>
 
             </div>
-
-        </div>
-
-        <div class="risk-card">
-
-            <h2>Disease Risk Level</h2>
-
-            <div class="risk-bar">
-
-                <div class="risk-progress"></div>
-
-            </div>
-
-            <p>Moderate Risk</p>
 
         </div>
 
@@ -289,5 +612,9 @@ href="{{ url_for('static', filename='css/dashboard.css') }}">
 {% endblock %}
 
 {% block scripts %}
+
 <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/counter.js') }}"></script>
+
 {% endblock %}
