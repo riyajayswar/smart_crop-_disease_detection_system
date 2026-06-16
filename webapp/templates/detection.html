@@ -12,6 +12,41 @@ filename='css/detection.css') }}">
 
 {% block content %}
 
+<div class="detect-hero">
+
+    <div class="hero-left">
+
+        <span class="hero-tag">
+            🌱 Deep Learning Powered
+        </span>
+
+        <h1>
+            Smart Crop Disease Detection
+        </h1>
+
+        <p>
+            Upload a crop image and let our CNN model
+            detect diseases with high accuracy.
+        </p>
+
+    </div>
+
+    <div class="hero-right">
+
+        <div class="accuracy-card">
+
+            <h1>98.2%</h1>
+
+            <span>
+                Detection Accuracy
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
 <div class="page-header">
 
     <h1>Disease Detection Center</h1>
@@ -133,6 +168,49 @@ filename='css/detection.css') }}">
         </div>
 
     </div>
+    <button
+        id="analyzeBtn"
+        class="primary-btn">
+
+        Analyze Disease
+
+    </button>
+
+</div>
+
+<div class="card ai-visualization">
+
+    <h2>
+        AI Vision Analysis
+    </h2>
+
+    <div class="vision-grid">
+
+        <div class="vision-box">
+
+            <h3>
+                Leaf Segmentation
+            </h3>
+
+            <div class="vision-placeholder">
+                Segmentation View
+            </div>
+
+        </div>
+
+        <div class="vision-box">
+
+            <h3>
+                Disease Heatmap
+            </h3>
+
+            <div class="vision-placeholder">
+                Heatmap Overlay
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
@@ -177,10 +255,9 @@ filename='css/detection.css') }}">
 
             <span>Severity</span>
 
-            <strong class="severity">
+            <strong class="severity" id="severity">
                 Moderate
             </strong>
-
         </div>
 
     </div>
@@ -216,6 +293,24 @@ filename='css/detection.css') }}">
         </div>
 
     </div>
+
+</div>
+
+<div class="card severity-card">
+
+    <h2>
+        Disease Severity Assessment
+    </h2>
+
+    <div class="severity-bar">
+
+        <div class="severity-fill"></div>
+
+    </div>
+
+    <h3>
+        Moderate Severity (65%)
+    </h3>
 
 </div>
 
@@ -289,6 +384,26 @@ filename='css/detection.css') }}">
         </button>
 
     </div>
+
+</div>
+
+<div class="card expert-card">
+
+    <h2>
+        Consult Agriculture Expert
+    </h2>
+
+    <p>
+        Connect with certified crop specialists.
+    </p>
+
+    <button class="primary-btn">
+
+        <i class="fa-solid fa-user-doctor"></i>
+
+        Book Consultation
+
+    </button>
 
 </div>
 
