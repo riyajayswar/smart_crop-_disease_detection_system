@@ -1170,3 +1170,108 @@ body{
         #ef4444
     );
 }
+.forecast-container{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:25px;
+
+    margin-top:25px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.05);
+}
+
+.forecast-strip{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:20px;
+}
+
+.forecast-box{
+
+    flex:1;
+
+    text-align:center;
+
+    padding:20px;
+
+    border-radius:18px;
+
+    background:#f8fafc;
+
+    transition:.3s;
+}
+
+.forecast-box:hover{
+
+    transform:
+    translateY(-5px);
+
+    background:#ecfdf5;
+}
+
+.forecast-box i{
+
+    margin:10px 0;
+
+    color:#10b981;
+
+    font-size:22px;
+}
+.weather-insight-card{
+
+    margin-top:25px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ecfdf5,
+        #f0fdf4
+    );
+
+    padding:25px;
+
+    border-radius:25px;
+}
+
+.weather-insight-card li{
+
+    margin-top:12px;
+}
+.live-alert{
+
+    background:#ef4444;
+
+    color:white;
+
+    padding:6px 12px;
+
+    border-radius:30px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    animation:pulseAlert 1.5s infinite;
+}
+
+@keyframes pulseAlert{
+
+    0%{
+        opacity:1;
+    }
+
+    50%{
+        opacity:.6;
+    }
+
+    100%{
+        opacity:1;
+    }
+}
