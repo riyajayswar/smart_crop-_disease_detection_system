@@ -314,3 +314,209 @@
 
     text-align:center;
 }
+/* AI STATUS */
+
+.ai-status-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:20px;
+
+    padding:15px;
+
+    background:#f8fafc;
+
+    border-radius:15px;
+}
+
+.status-dot{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    background:#10b981;
+
+    animation:pulseDot 1.5s infinite;
+}
+
+@keyframes pulseDot{
+
+    0%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+    50%{
+        transform:scale(1.5);
+        opacity:.6;
+    }
+
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+.result-card{
+
+    animation:fadeInUp .6s ease;
+}
+
+@keyframes fadeInUp{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+    }
+}
+.processing{
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.processing::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-100%;
+
+    width:100%;
+
+    height:100%;
+
+    background:
+
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.4),
+        transparent
+    );
+
+    animation:
+    shine 3s infinite;
+}
+
+@keyframes shine{
+
+    100%{
+        left:100%;
+    }
+}
+.severity-dashboard{
+
+    margin:30px 0;
+}
+
+.severity-meter{
+
+    height:25px;
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+    background:#e5e7eb;
+
+    margin-top:20px;
+}
+
+.severity-fill{
+
+    width:0%;
+
+    height:100%;
+
+    border-radius:50px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #10b981,
+        #facc15,
+        #ef4444
+    );
+
+    transition:2s;
+}
+
+.severity-labels{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:10px;
+}
+.ai-gauge{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:30px;
+}
+
+.outer-circle{
+
+    width:220px;
+
+    height:220px;
+
+    border-radius:50%;
+
+    background:
+    conic-gradient(
+        #10b981 0deg,
+        #10b981 0deg,
+        #e5e7eb 0deg
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+}
+
+.inner-circle{
+
+    width:160px;
+
+    height:160px;
+
+    border-radius:50%;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+}

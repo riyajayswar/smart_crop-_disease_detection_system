@@ -21,17 +21,16 @@ def predict():
 
     image = request.files["image"]
 
-    crop = "Tomato"
-    disease = "Early Blight"
-    confidence = 96.4
-    severity = "Moderate"
-
     return jsonify({
 
-        "crop": crop,
-        "disease": disease,
-        "confidence": confidence,
-        "severity": severity
+        
+        "crop": "Potato",
+
+        "disease": "Late Blight",
+
+        "confidence": 88.7,
+
+        "severity": "High"
 
     })
 

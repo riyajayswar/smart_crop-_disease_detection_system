@@ -168,6 +168,17 @@ filename='css/detection.css') }}">
         </div>
 
     </div>
+
+    <div class="ai-status-box">
+
+        <div class="status-dot"></div>
+
+        <span id="aiStatus">
+            Waiting for image...
+        </span>
+
+    </div>
+
     <button
         id="analyzeBtn"
         class="primary-btn">
@@ -175,6 +186,31 @@ filename='css/detection.css') }}">
         Analyze Disease
 
     </button>
+
+</div>
+
+<div class="severity-dashboard card">
+
+    <h2>
+        Disease Risk Level
+    </h2>
+
+    <div class="severity-meter">
+
+        <div
+            id="severityFill"
+            class="severity-fill">
+        </div>
+
+    </div>
+
+    <div class="severity-labels">
+
+        <span>Low</span>
+        <span>Moderate</span>
+        <span>High</span>
+
+    </div>
 
 </div>
 
@@ -268,30 +304,23 @@ filename='css/detection.css') }}">
 
         <h2>AI Confidence</h2>
 
-        <div class="gauge">
+        <div class="ai-gauge">
 
-            <svg width="220" height="120">
+            <div class="outer-circle">
 
-                <path
-                    d="M20 100 A90 90 0 0 1 200 100"
-                    fill="none"
-                    stroke="#ddd"
-                    stroke-width="15"/>
+                <div class="inner-circle">
 
-                <path
-                    d="M20 100 A90 90 0 0 1 200 100"
-                    fill="none"
-                    stroke="#10b981"
-                    stroke-width="15"
-                    stroke-dasharray="240"
-                    stroke-dashoffset="15"/>
+                    <h1 id="confidenceGauge">
 
-            </svg>
+                        0%
 
-            <h1>96%</h1>
+                    </h1>
+
+                </div>
+
+            </div>
 
         </div>
-
     </div>
 
 </div>
@@ -362,6 +391,88 @@ filename='css/detection.css') }}">
             </ul>
 
         </div>
+
+    </div>
+
+    <div class="card treatment-timeline">
+
+        <h2>
+            Recovery Timeline
+        </h2>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                <span>Day 1</span>
+
+                <p>
+                    Apply Treatment
+                </p>
+
+            </div>
+
+            <div class="timeline-item">
+
+                <span>Day 7</span>
+
+                <p>
+                    Monitor Crop Health
+                </p>
+
+            </div>
+
+            <div class="timeline-item">
+
+                <span>Day 14</span>
+
+                <p>
+                    Reassess Disease Level
+                </p>
+
+            </div>
+
+            <div class="timeline-item">
+
+                <span>Day 21</span>
+
+                <p>
+                    Expected Recovery
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card history-card">
+
+        <h2>
+            Recent Analyses
+        </h2>
+
+        <table>
+
+            <tr>
+                <th>Crop</th>
+                <th>Disease</th>
+                <th>Confidence</th>
+            </tr>
+
+            <tr>
+                <td>Tomato</td>
+                <td>Early Blight</td>
+                <td>96%</td>
+            </tr>
+
+            <tr>
+                <td>Potato</td>
+                <td>Late Blight</td>
+                <td>88%</td>
+            </tr>
+
+        </table>
 
     </div>
 
