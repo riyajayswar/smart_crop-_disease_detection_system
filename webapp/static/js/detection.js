@@ -32,52 +32,164 @@ document.getElementById("analyzeBtn");
 
 analyzeBtn.addEventListener("click", async () => {
 
+    console.log("STEP 1");
+
     const file = imageInput.files[0];
+
+    const status =
+    document.getElementById("aiStatus");
+
+    const progressFill =
+    document.getElementById("progressFill");
+
+    const progressValue =
+    document.getElementById("progressValue");
 
     if(!file){
 
-        alert("Please upload an image first");
+        alert("No file selected");
 
         return;
     }
+
+    console.log("STEP 2");
 
     const formData = new FormData();
 
     formData.append("image", file);
 
-    try{
+    status.innerText =
+    "Initializing AI Engine...";
 
-        const response =
-        await fetch("/predict", {
+    let progress = 0;
 
-            method: "POST",
+    const messages = [
 
-            body: formData
+        "Scanning Crop Image...",
 
-        });
+        "Detecting Disease Patterns...",
 
-        const data =
-        await response.json();
+        "Running CNN Model...",
 
-        document.getElementById("cropName")
-        .innerText = data.crop;
+        "Calculating Confidence...",
 
-        document.getElementById("diseaseName")
-        .innerText = data.disease;
+        "Generating Recommendations..."
 
-        document.getElementById("confidence")
-        .innerText = data.confidence + "%";
+    ];
 
-        document.getElementById("severity")
-        .innerText = data.severity;
+    let index = 0;
+
+    const loader = setInterval(() => {
+
+        progress += 20;
+
+        progressFill.style.width =
+        progress + "%";
+
+        progressValue.innerText =
+        progress + "%";
+
+        if(index < messages.length){
+
+            status.innerText =
+            messages[index];
+
+            index++;
+
+        }
+
+        if(progress >= 100){
+
+            clearInterval(loader);
+
+        }
+
+    }, 500);
+
+    const response =
+    await fetch("/predict", {
+
+        method:"POST",
+
+        body:formData
+
+    });
+
+    console.log("STEP 3");
+
+    const data =
+    await response.json();
+
+    const severityFill =
+    document.getElementById(
+        "severityFill"
+    );
+
+    console.log(severityFill);
+
+    if(data.severity === "Low"){
+
+        severityFill.style.width =
+        "30%";
 
     }
 
-    catch(error){
+    else if(
+        data.severity === "Moderate"
+    ){
 
-        console.error(error);
+        severityFill.style.width =
+        "65%";
 
-        alert("Prediction Failed");
+    }
+
+    else{
+
+        severityFill.style.width =
+        "100%";
+
+    }
+
+    status.innerText =
+    "Diagnosis Completed Successfully";
+
+    document.getElementById("cropName").innerText =
+    data.crop;
+
+    document.getElementById("diseaseName").innerText =
+    data.disease;
+
+    document.getElementById("confidence").innerText =
+    data.confidence + "%";
+
+    document.getElementById("severity").innerText =
+    data.severity;
+
+    /* AI Confidence Gauge */
+
+    const gauge =
+    document.querySelector(
+        ".outer-circle"
+    );
+
+    const gaugeText =
+    document.getElementById(
+        "confidenceGauge"
+    );
+
+    if(gauge && gaugeText){
+
+        let value =
+        data.confidence;
+
+        gaugeText.innerText =
+        value + "%";
+
+        gauge.style.background =
+        `conic-gradient(
+            #10b981 ${value * 3.6}deg,
+            #e5e7eb 0deg
+        )`;
 
     }
 
