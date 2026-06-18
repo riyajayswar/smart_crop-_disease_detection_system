@@ -165,6 +165,48 @@ analyzeBtn.addEventListener("click", async () => {
     document.getElementById("severity").innerText =
     data.severity;
 
+    const assessmentFill =
+    document.getElementById(
+        "assessmentFill"
+    );
+
+    const severityLabel =
+    document.getElementById("severityLabel");
+
+    if(assessmentFill){
+
+        if(data.severity === "Low"){
+
+            assessmentFill.style.width = "30%";
+            assessmentFill.style.background = "#10b981";
+
+            severityLabel.innerText =
+            "Low Severity (30%)";
+
+        }
+
+        else if(data.severity === "Moderate"){
+
+            assessmentFill.style.width = "65%";
+            assessmentFill.style.background = "#facc15";
+
+            severityLabel.innerText =
+            "Moderate Severity (65%)";
+
+        }
+
+        else{
+
+            assessmentFill.style.width = "100%";
+            assessmentFill.style.background = "#ef4444";
+
+            severityLabel.innerText =
+            "High Severity (100%)";
+
+        }
+
+    }
+
     /* AI Confidence Gauge */
 
     const gauge =

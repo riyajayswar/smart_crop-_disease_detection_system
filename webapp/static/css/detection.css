@@ -452,17 +452,16 @@
 
     height:100%;
 
-    border-radius:50px;
-
-    background:
-    linear-gradient(
+    background:linear-gradient(
         90deg,
         #10b981,
         #facc15,
         #ef4444
     );
 
-    transition:2s;
+    border-radius:50px;
+
+    transition:2s ease;
 }
 
 .severity-labels{
@@ -519,4 +518,37 @@
     justify-content:center;
 
     align-items:center;
+}
+/* Disease Severity Assessment */
+
+.severity-card{
+
+    margin-top:30px;
+}
+
+.severity-bar{
+
+    width:100%;
+
+    height:22px;
+
+    background:#e5e7eb;
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+    margin:20px 0;
+}
+.severity-bar .severity-fill{
+
+    width:0%;
+
+    height:100%;
+
+    background:#facc15;
+
+    border-radius:50px;
+
+    transition:2s ease;
 }
