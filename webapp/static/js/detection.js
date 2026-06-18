@@ -165,6 +165,46 @@ analyzeBtn.addEventListener("click", async () => {
     document.getElementById("severity").innerText =
     data.severity;
 
+    const historyBody =
+    document.getElementById("historyBody");
+
+    const today =
+    new Date().toLocaleString();
+
+    const record = {
+
+        date: today,
+
+        crop: data.crop,
+
+        disease: data.disease,
+
+        confidence: data.confidence,
+
+        severity: data.severity
+
+    };
+
+    let history =
+
+    JSON.parse(
+        localStorage.getItem(
+            "detectionHistory"
+        )
+    ) || [];
+
+    history.unshift(record);
+
+    localStorage.setItem(
+
+        "detectionHistory",
+
+        JSON.stringify(history)
+
+    );
+
+    renderHistory();
+
     const assessmentFill =
     document.getElementById(
         "assessmentFill"
@@ -235,4 +275,59 @@ analyzeBtn.addEventListener("click", async () => {
 
     }
 
+    const reportBtn =
+    document.getElementById(
+        "downloadReportBtn"
+    );
+
+    reportBtn.addEventListener(
+        "click",
+        () => {
+
+            window.location.href =
+            "/download-report";
+
+        }
+    );
+function renderHistory(){
+
+    const historyBody =
+    document.getElementById(
+        "historyBody"
+    );
+
+    let history =
+
+    JSON.parse(
+        localStorage.getItem(
+            "detectionHistory"
+        )
+    ) || [];
+
+    historyBody.innerHTML = "";
+
+    history.forEach(record => {
+
+        historyBody.innerHTML += `
+
+        <tr>
+
+            <td>${record.date}</td>
+
+            <td>${record.crop}</td>
+
+            <td>${record.disease}</td>
+
+            <td>${record.confidence}%</td>
+
+            <td>${record.severity}</td>
+
+        </tr>
+
+        `;
+
+    });
+
+}
+renderHistory();
 });
